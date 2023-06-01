@@ -6,7 +6,8 @@
   "scripts": {
     "compile": "tsc *.ts --outDir js",
     "compile:watch": "npm run compile -- --watch *.ts",
-    "start": "nodemon server.ts",
+    "start": "server.ts",
+    "dev": "nodemon server.ts",
     "lint": "eslint *.ts"
   },
   "keywords": [],
