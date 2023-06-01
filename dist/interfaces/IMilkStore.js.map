@@ -1,0 +1,1 @@
+{"version":3,"file":"IMilkStore.js","sourceRoot":"","sources":["../../interfaces/IMilkStore.ts"],"names":[],"mappings":"","sourcesContent":["type Results = {\n    name: string,\n    type: string,\n    storage: number,\n    id: string,\n}\n\ninterface IMilkStore {\n  count: number,\n  results: Results[],\n}\n\nexport default IMilkStore\n"]}

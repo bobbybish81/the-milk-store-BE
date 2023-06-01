@@ -2,12 +2,13 @@
   "name": "the-milk-store-be",
   "version": "1.0.0",
   "description": "",
-  "main": "server.ts",
+  "main": "server.js",
   "scripts": {
+    "build": "npx tsc",
+    "start": "node dist/server.js",
+    "dev": "nodemon server.ts",
     "compile": "tsc *.ts --outDir js",
     "compile:watch": "npm run compile -- --watch *.ts",
-    "start": "server.ts",
-    "dev": "nodemon server.ts",
     "lint": "eslint *.ts"
   },
   "keywords": [],
@@ -25,6 +26,6 @@
     "nodemon": "^2.0.20",
     "ts-node": "^10.7.0",
     "tsconfig-paths": "^3.14.1",
-    "typescript": "^4.6.3"
+    "typescript": "^4.9.5"
   }
 }
