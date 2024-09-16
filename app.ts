@@ -9,20 +9,19 @@ import cors from "cors";
 
 const app: Application = express();
 
-const corsOptions = {
-  origin: process.env.CORS_ALLOW_ORIGIN || '*',
-};
-
-app.use(cors(corsOptions));
 app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
+app.use(cors());
 
 app
   .route('/api/milkstore')
   .get((_req: Request, res: Response) => {
     return milkStoreDB ?
     res
-      .setHeader('content-type', 'application/json')
+      // .setHeader('content-type', 'application/json')
+      .setHeader('Access-Control-Allow-Origin', 'https://themilkstore.netlify.app')
+      .setHeader('Access-Control-Allow-Methods', 'GET')
+      .setHeader('Access-Control-Allow-Headers', 'Content-Type, Authorization, application/json')
       .status(200)
       .json(milkStoreDB):
     res
@@ -36,6 +35,9 @@ app
     const product = milkStoreDB.results.find(product => product.id === _req.params.productId);
     if (!product) {
       return res
+        .setHeader('Access-Control-Allow-Origin', 'https://themilkstore.netlify.app')
+        .setHeader('Access-Control-Allow-Methods', 'PATCH')
+        .setHeader('Access-Control-Allow-Headers', 'Content-Type, Authorization, application/json')
         .status(404)
         .end(); 
     }
@@ -43,7 +45,9 @@ app
     return milkStoreDB ?
     res
       .setHeader('location', `/api/milkstore/${product.id}`)
-      .setHeader('content-type', 'application/json')
+      .setHeader('Access-Control-Allow-Origin', 'https://themilkstore.netlify.app')
+      .setHeader('Access-Control-Allow-Methods', 'PATCH')
+      .setHeader('Access-Control-Allow-Headers', 'Content-Type, Authorization, application/json')
       .status(200)
       .json(milkStoreDB):
     res
