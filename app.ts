@@ -9,7 +9,12 @@ import cors from "cors";
 
 const app: Application = express();
 
-app.use(cors()) 
+const corsOptions = {
+  origin: 'https://themilkstore.netlify.app', // Allow this origin
+  optionsSuccessStatus: 200
+};
+
+app.use(cors(corsOptions)) 
 app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
 
