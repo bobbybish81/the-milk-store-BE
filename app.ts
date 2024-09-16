@@ -11,7 +11,8 @@ const app: Application = express();
 
 // CORS configuration
 const corsOptions = {
-  origin: 'https://themilkstore.netlify.app', // Allow this origin
+  // origin: 'https://themilkstore.netlify.app', // Allow this origin
+  origin: '*',
   methods: ['GET', 'PATCH'], // Allowed HTTP methods
   allowedHeaders: ['Content-Type', 'Authorization', 'application/json'], // Allowed headers
 };
