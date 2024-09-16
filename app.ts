@@ -13,13 +13,19 @@ const app: Application = express();
 const corsOptions = {
   origin: 'https://themilkstore.netlify.app', // Allow this origin
   methods: ['GET', 'PATCH'], // Allowed HTTP methods
-  allowedHeaders: ['Content-Type', 'Authorization'], // Allowed headers
-  credentials: true, // If you need to send cookies or auth tokens
+  allowedHeaders: ['Content-Type', 'Authorization', 'application/json'], // Allowed headers
 };
 
 app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
+// Use CORS with options globally
 app.use(cors(corsOptions));
+
+// Handle preflight requests (OPTIONS)
+app.options('*', cors(corsOptions));
+
+// Trust Heroku’s proxy
+app.set('trust proxy', 1);
 
 app
   .route('/api/milkstore')
